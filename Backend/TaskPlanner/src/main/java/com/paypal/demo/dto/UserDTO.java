@@ -5,9 +5,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-public class UserDTO {
-
-	private Long id;
+public class UserDTO {	
 	
 	@Pattern(regexp = "^[A-Za-z]$", message = "Enter valid name ")
 	private String name;
