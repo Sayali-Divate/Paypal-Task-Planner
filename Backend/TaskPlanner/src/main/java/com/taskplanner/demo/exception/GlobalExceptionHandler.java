@@ -34,5 +34,50 @@ public class GlobalExceptionHandler {
 		
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(SprintNotFoundException.class)
+	public ResponseEntity<ErrorDetails> sprintNotFoundExceptionHandler(SprintNotFoundException ee, WebRequest req){
+		
+		ErrorDetails error = new ErrorDetails();
+		error.setMessage(ee.getMessage());
+		error.setDescription(req.getDescription(false));
+		error.setTimeStamp(LocalDateTime.now());
+		
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(TaskNotFoundException.class)
+	public ResponseEntity<ErrorDetails> taskNotFoundExceptionHandler(TaskNotFoundException ee, WebRequest req){
+		
+		ErrorDetails error = new ErrorDetails();
+		error.setMessage(ee.getMessage());
+		error.setDescription(req.getDescription(false));
+		error.setTimeStamp(LocalDateTime.now());
+		
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(UserException.class)
+	public ResponseEntity<ErrorDetails> userExceptionHandler(UserException ee, WebRequest req){
+		
+		ErrorDetails error = new ErrorDetails();
+		error.setMessage(ee.getMessage());
+		error.setDescription(req.getDescription(false));
+		error.setTimeStamp(LocalDateTime.now());
+		
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorDetails> exceptionHandler(Exception ee, WebRequest req){
+		
+		ErrorDetails error = new ErrorDetails();
+		error.setMessage(ee.getMessage());
+		error.setDescription(req.getDescription(false));
+		error.setTimeStamp(LocalDateTime.now());
+		
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+	}
+	
 
 }
