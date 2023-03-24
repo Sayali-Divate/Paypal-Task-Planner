@@ -1,7 +1,7 @@
-package com.paypal.demo.service;
+package com.taskplanner.demo.service;
 
-import com.paypal.demo.dto.UserDTO;
-import com.paypal.demo.entity.User;
+import com.taskplanner.demo.dto.UserDTO;
+import com.taskplanner.demo.entity.User;
 
 public interface UserService {
 	

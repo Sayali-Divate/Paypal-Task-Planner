@@ -1,4 +1,4 @@
-package com.paypal.demo.entity;
+package com.taskplanner.demo.entity;
 
 public enum TaskType {
 

@@ -1,11 +1,11 @@
-package com.paypal.demo.service;
+package com.taskplanner.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.paypal.demo.dto.UserDTO;
-import com.paypal.demo.entity.User;
-import com.paypal.demo.repository.UserRepository;
+import com.taskplanner.demo.dto.UserDTO;
+import com.taskplanner.demo.entity.User;
+import com.taskplanner.demo.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
