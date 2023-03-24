@@ -28,7 +28,7 @@ public class CustomConfiguration {
 		http.authorizeHttpRequests(
 				
 				auth -> auth.requestMatchers("/user/welcome/signup", "/user/auth/login").permitAll()				
-				
+				.requestMatchers("/task", "/sprint").authenticated()
 				).csrf().disable()
 		.formLogin()
 		.loginPage("/user/auth/login")

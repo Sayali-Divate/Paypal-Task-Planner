@@ -2,6 +2,7 @@ package com.taskplanner.demo.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,10 +21,10 @@ public class Task {
 	private String title;
 	private String description;
 	
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private TaskType taskType;
 	
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private TaskStatus taskStatus;		
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
