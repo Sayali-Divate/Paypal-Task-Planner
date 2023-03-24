@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.taskplanner.demo.dto.LoginDTO;
 import com.taskplanner.demo.dto.UserDTO;
 import com.taskplanner.demo.entity.User;
+import com.taskplanner.demo.exception.UserException;
 import com.taskplanner.demo.service.UserService;
 
 import jakarta.validation.Valid;
@@ -31,8 +32,7 @@ public class UserController {
 	PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	AuthenticationManager authenticationManager;
-	
+	AuthenticationManager authenticationManager;	
 	
 	
 	/**
@@ -40,9 +40,10 @@ public class UserController {
 	 * @param userInfo - It is a DTO which contains basic user information
 	 * @return - this api returns a user which has got a userId after successfully 
 	 * 			creating an account with a status code
+	 * @throws UserException 
 	 */
 	@PostMapping("/welcome/signup")
-	public ResponseEntity<User> createAcount(@Valid @RequestBody UserDTO userInfo) {
+	public ResponseEntity<User> createAcount(@Valid @RequestBody UserDTO userInfo) throws UserException {
 		
 //		hashing the user password
 		userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
@@ -52,6 +53,11 @@ public class UserController {
 	}
 	
 	
+	/**
+	 * api checks the authentication and also logs in the user
+	 * @param loginReq - this is LoginDTO object with contains email and password of the user
+	 * @return it returns a string message
+	 */
 	@PostMapping("/auth/login")
 	public ResponseEntity<String> login(@Valid @RequestBody LoginDTO loginReq){
 		
