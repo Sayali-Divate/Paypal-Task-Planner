@@ -24,6 +24,13 @@ public class SprintController {
 	
 	@Autowired
 	SprintService sprintService;
+	
+	/**
+	 * this controller is for creating a sprint
+	 * @param sprintReq - It is a DTO of a sprint which contains all the neccessary information
+	 * @return returns a sprint object with the id
+	 * @throws UserException - thrown when person is not logged in
+	 */
 
 	@PostMapping("/sprint-creation")
 	public ResponseEntity<Sprint> createSprint(@Valid @RequestBody SprintDTO sprintReq) throws UserException{
@@ -32,6 +39,12 @@ public class SprintController {
 		return new ResponseEntity<>(sprint, HttpStatus.CREATED);
 	}
 	
+	
+	/**
+	 * this gives the list of sprints of the logged in user
+	 * @return - the list of sprints of the logged in user
+	 * @throws UserException thrown when person is not logged in
+	 */
 	@GetMapping("/list")
 	ResponseEntity<List<Sprint>> getSprintList() throws UserException{
 		

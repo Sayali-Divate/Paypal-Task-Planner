@@ -27,7 +27,12 @@ public class TaskController {
 	@Autowired
 	TaskService taskService;
 	
-
+	/**
+	 * For creating a task
+	 * @param taskReq - its a DTO with valid task Info
+	 * @return new task with the id
+	 * @throws UserException thrown when person is not logged in
+	 */
 	@PostMapping("/task-creation")
 	public ResponseEntity<Task> createTask(@Valid @RequestBody TaskDTO taskReq) throws UserException{
 		
@@ -35,6 +40,15 @@ public class TaskController {
 		return new ResponseEntity<>(task, HttpStatus.CREATED);
 	}
 	
+	
+	/**
+	 * for changing the assignee of the task
+	 * @param taskId - id of the task that needed to passed
+	 * @param assigneeId - id of the new assignee that needed to be assigned to the task
+	 * @return task with the changed assignee
+	 * @throws UserException thrown when person is not logged in
+	 * @throws TaskNotFoundException thrown when task id is not found
+	 */
 	@PostMapping("/task-assignee")
 	public ResponseEntity<Task> changeTaskAssignee(@RequestParam("taskId") Long taskId, @RequestParam("assigneeId") Long assigneeId) throws UserException, TaskNotFoundException{
 		
@@ -42,6 +56,14 @@ public class TaskController {
 		return new ResponseEntity<>(task, HttpStatus.ACCEPTED);
 	}
 	
+	
+	/**
+	 * for changing the status of the task
+	 * @param taskId - id of the task that needed to passed
+	 * @param status - the status that needed to be set
+	 * @return the task with the changed status
+	 * @throws TaskNotFoundException thrown when task id is not found
+	 */
 	@PostMapping("/status-change/{taskId}")
 	public ResponseEntity<Task> changeStatus(@PathParam("taskId") Long taskId, @RequestParam("status") String status) throws TaskNotFoundException{
 		
